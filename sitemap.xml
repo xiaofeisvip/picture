@@ -2,73 +2,203 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.happyshark.cn/2020/05/22/travis-ci%E5%9C%A8Node.js-v14.0%E4%B8%8B%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BAhexo%E6%8A%A5%E9%94%99/</loc>
-    
-    <lastmod>2020-05-22T07:43:52.517Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.happyshark.cn/2019/12/26/hello-world/</loc>
     
-    <lastmod>2020-05-22T07:03:48.098Z</lastmod>
+    <lastmod>2021-09-12</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.happyshark.cn/link/index.html</loc>
+    <loc>https://www.happyshark.cn/2021/09/13/%E4%BD%BF%E7%94%A8Cloudflare%20Workers%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/</loc>
     
-    <lastmod>2020-04-16T11:25:41.084Z</lastmod>
+    <lastmod>2021-09-12</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.happyshark.cn/2020/05/22/travis-ci%E5%9C%A8Node.js-v14.0%E4%B8%8B%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BAhexo%E6%8A%A5%E9%94%99/</loc>
+    
+    <lastmod>2020-05-22</lastmod>
     
   </url>
   
   <url>
     <loc>https://www.happyshark.cn/2020/01/20/%E6%9A%B4%E5%8A%9B%E6%8F%90%E5%8D%87%E7%BD%91%E9%80%9F%E2%80%94%E2%80%94%E5%A4%9A%E6%8B%A8/</loc>
     
-    <lastmod>2020-04-16T09:11:44.692Z</lastmod>
+    <lastmod>2020-05-22</lastmod>
     
   </url>
   
   <url>
     <loc>https://www.happyshark.cn/2020/03/24/windows-XP%E5%AE%89%E8%A3%85pyqt5%E5%92%8Cpyinstaller%E7%9A%84%E5%9D%91/</loc>
     
-    <lastmod>2020-04-16T09:11:38.548Z</lastmod>
+    <lastmod>2020-05-22</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.happyshark.cn/link/index.html</loc>
+    
+    <lastmod>2020-04-16</lastmod>
     
   </url>
   
   <url>
     <loc>https://www.happyshark.cn/about/index.html</loc>
     
-    <lastmod>2020-01-19T07:53:55.291Z</lastmod>
+    <lastmod>2020-01-19</lastmod>
     
   </url>
   
   <url>
     <loc>https://www.happyshark.cn/music/index.html</loc>
     
-    <lastmod>2020-01-16T12:14:47.568Z</lastmod>
+    <lastmod>2020-01-16</lastmod>
     
   </url>
   
   <url>
     <loc>https://www.happyshark.cn/tags/index.html</loc>
     
-    <lastmod>2020-01-16T12:14:47.568Z</lastmod>
+    <lastmod>2020-01-16</lastmod>
     
   </url>
   
   <url>
     <loc>https://www.happyshark.cn/categories/index.html</loc>
     
-    <lastmod>2020-01-16T12:14:47.553Z</lastmod>
+    <lastmod>2020-01-16</lastmod>
     
   </url>
   
   <url>
     <loc>https://www.happyshark.cn/Gallery/index.html</loc>
     
-    <lastmod>2020-01-16T12:14:47.551Z</lastmod>
+    <lastmod>2020-01-16</lastmod>
     
+  </url>
+  
+
+  <url>
+    <loc>https://www.happyshark.cn/</loc>
+    <lastmod>2021-09-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  
+  <url>
+    <loc>https://www.happyshark.cn/tags/hexo/</loc>
+    <lastmod>2021-09-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.happyshark.cn/tags/travis-CI/</loc>
+    <lastmod>2021-09-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.happyshark.cn/tags/windowsXP/</loc>
+    <lastmod>2021-09-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.happyshark.cn/tags/pyqt5/</loc>
+    <lastmod>2021-09-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.happyshark.cn/tags/%E6%8A%80%E6%9C%AF/</loc>
+    <lastmod>2021-09-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.happyshark.cn/tags/v2ray/</loc>
+    <lastmod>2021-09-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.happyshark.cn/tags/%E5%AE%BD%E5%B8%A6/</loc>
+    <lastmod>2021-09-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.happyshark.cn/tags/%E5%A4%9A%E6%8B%A8/</loc>
+    <lastmod>2021-09-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.happyshark.cn/tags/%E6%8F%90%E9%80%9F/</loc>
+    <lastmod>2021-09-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.happyshark.cn/tags/wifi/</loc>
+    <lastmod>2021-09-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.happyshark.cn/tags/serverless/</loc>
+    <lastmod>2021-09-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.happyshark.cn/tags/%E8%AF%AD%E9%9B%80/</loc>
+    <lastmod>2021-09-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+
+  
+  <url>
+    <loc>https://www.happyshark.cn/categories/%E5%8D%9A%E5%AE%A2/</loc>
+    <lastmod>2021-09-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.happyshark.cn/categories/python/</loc>
+    <lastmod>2021-09-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.happyshark.cn/categories/%E6%8A%80%E6%9C%AF/</loc>
+    <lastmod>2021-09-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.happyshark.cn/categories/%E5%AE%BD%E5%B8%A6/</loc>
+    <lastmod>2021-09-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
   </url>
   
 </urlset>
