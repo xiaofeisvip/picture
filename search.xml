@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>win11启用wsl2</title>
+      <link href="/2021/09/30/win11%E5%90%AF%E7%94%A8wsl2/"/>
+      <url>/2021/09/30/win11%E5%90%AF%E7%94%A8wsl2/</url>
+      
+        <content type="html"><![CDATA[<p>前两天帮师兄跑一个docker，发现安装完docker for windows后死活打不开，今天晚上决定捣鼓捣鼓这个问题。。。</p><h1 id="安装vmware-16"><a href="#安装vmware-16" class="headerlink" title="安装vmware 16"></a>安装vmware 16</h1><p>据传闻说vm16版本好像支持共存，故直接安装最新版本的即可。</p><h1 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h1><ol><li><p>先去windows功能里面启用<code>虚拟机平台</code>和<code>适用于linux的windows子系统</code></p><p><img src="https://cdn.jsdelivr.net/gh/HPShark/blogimages@master/win11%E5%90%AF%E7%94%A8wsl2/image-20210930203355617.png" alt="image-20210930203355617"></p></li><li><p>重启，管理员身份打开cmd，输入以下指令：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl --set-default-version 2</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/HPShark/blogimages@master/win11启用wsl2/image-20210930203527442.png" alt=""></p></li><li><p>更新一下wsl到最新版</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wsl --update</span><br><span class="line">wsl --install</span><br></pre></td></tr></table></figure></li><li><p>下载安装docker for windows，启动成功</p><p><img src="https://cdn.jsdelivr.net/gh/HPShark/blogimages@master/win11%E5%90%AF%E7%94%A8wsl2/image-20210930205420308.png" alt="image-20210930205420308"></p></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 技术 </tag>
+            
+            <tag> 虚拟机 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>v2ray搭建+Cloudflare Workers反向代理</title>
       <link href="/2021/09/13/%E4%BD%BF%E7%94%A8Cloudflare%20Workers%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/"/>
       <url>/2021/09/13/%E4%BD%BF%E7%94%A8Cloudflare%20Workers%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/</url>
