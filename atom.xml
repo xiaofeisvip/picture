@@ -6,7 +6,7 @@
   <link href="https://www.happyshark.cn/atom.xml" rel="self"/>
   
   <link href="https://www.happyshark.cn/"/>
-  <updated>2022-06-21T08:00:00.000Z</updated>
+  <updated>2022-07-10T14:00:00.000Z</updated>
   <id>https://www.happyshark.cn/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ubuntu流量统计工具——vnstat</title>
+    <link href="https://www.happyshark.cn/2022/07/10/ubuntu%E6%B5%81%E9%87%8F%E7%BB%9F%E8%AE%A1%E5%B7%A5%E5%85%B7%E2%80%94%E2%80%94vnstat/"/>
+    <id>https://www.happyshark.cn/2022/07/10/ubuntu%E6%B5%81%E9%87%8F%E7%BB%9F%E8%AE%A1%E5%B7%A5%E5%85%B7%E2%80%94%E2%80%94vnstat/</id>
+    <published>2022-07-10T14:00:00.000Z</published>
+    <updated>2022-07-10T14:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="官网下载"><a href="#官网下载" class="headerlink" title="官网下载"></a>官网下载</h2><p>vnstat tracker：<a href="https://tracker.debian.org/pkg/vnstat">https://tracker.debian.org/pkg/vnstat</a></p><p>编译安装</p><ul><li><p>下载</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 也可以下载对应的tag的源文件</span><br><span class="line">git clone https://github.com/vergoh/vnstat.git</span><br></pre></td></tr></table></figure></li><li><p>安装环境</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install gcc sqlite sqlite-devel make</span><br></pre></td></tr></table></figure></li><li><p>编译&amp;安装</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd vnstat &amp;&amp; ./configure --prefix=/usr --sysconfdir=/etc &amp;&amp; make</span><br><span class="line"></span><br><span class="line"># 安装</span><br><span class="line">make install</span><br></pre></td></tr></table></figure></li></ul><h2 id="Debian-Ubuntu"><a href="#Debian-Ubuntu" class="headerlink" title="Debian/Ubuntu"></a>Debian/Ubuntu</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install vnstat</span><br></pre></td></tr></table></figure><h2 id="2-Centos"><a href="#2-Centos" class="headerlink" title="2.Centos"></a>2.Centos</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install vnstat</span><br></pre></td></tr></table></figure><h1 id="初始化设置"><a href="#初始化设置" class="headerlink" title="初始化设置"></a>初始化设置</h1><h2 id="创建开机自启动"><a href="#创建开机自启动" class="headerlink" title="创建开机自启动"></a>创建开机自启动</h2><ul><li><p>复制service</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp examples/systemd/vnstat.service /etc/systemd/system/</span><br></pre></td></tr></table></figure></li><li><p>设置开机自启</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable vnstat</span><br></pre></td></tr></table></figure></li></ul><h2 id="查找网卡"><a href="#查找网卡" class="headerlink" title="查找网卡"></a>查找网卡</h2><ul><li><p>KVM/XEN -&gt;eth0/ens3</p></li><li><p>OpenVZ -&gt;venet0</p></li></ul><blockquote><p>根据自己的实际情况查找到网卡命令：ifconfig</p></blockquote><h2 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h2><ul><li><p>配置文件默认为月统计,为每月流量结算日期,默认为每月1日</p></li><li><p>网卡默认为eth0,这里需要根据自己的实际情况修改</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/vnstat.conf</span><br><span class="line"></span><br><span class="line"># default interface (leave empty for automatic selection)</span><br><span class="line">Interface &quot;eth0&quot;</span><br><span class="line"></span><br><span class="line"># on which day should months change</span><br><span class="line">MonthRotate 1 </span><br><span class="line">MonthRotateAffectsYears 0</span><br></pre></td></tr></table></figure></li></ul><h2 id="初始化数据库"><a href="#初始化数据库" class="headerlink" title="初始化数据库"></a>初始化数据库</h2><blockquote><p>vnstat新版本已经移除了-u参数,如果是新版本直接进行下一部重启即可</p></blockquote><ul><li><p>KVM/XEN</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vnstat -u -i eth0/ens3</span><br></pre></td></tr></table></figure></li><li><p>OpenVZ</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vnstat -u -i venet0</span><br></pre></td></tr></table></figure></li><li><p>数据库路径</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/var/lib/vnstat/</span><br></pre></td></tr></table></figure></li><li><p>删除数据库</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vnstat --delete --force -i eth0/ens3</span><br></pre></td></tr></table></figure></li></ul><h2 id="4-重启"><a href="#4-重启" class="headerlink" title="4.重启"></a>4.重启</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart vnstat</span><br></pre></td></tr></table></figure><h1 id="其余命令"><a href="#其余命令" class="headerlink" title="其余命令"></a>其余命令</h1><h2 id="流量统计查询"><a href="#流量统计查询" class="headerlink" title="流量统计查询"></a>流量统计查询</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vnstat -l    #实时统计</span><br><span class="line">vnstat -h    #按小时查询</span><br><span class="line">vnstat -d    #按天数查询</span><br><span class="line">vnstat -m    #按月数查询</span><br><span class="line">vnstat -w    #按周数查询</span><br><span class="line">vnstat -t    #查询TOP10</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+    <summary type="html">服务器小水管每月只有183G流量，对ubuntu有了流量统计有了需求，google之后选择vnstat作为流量统计工具，备份一下配置过程</summary>
+    
+    
+    
+    <category term="技术" scheme="https://www.happyshark.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="技术" scheme="https://www.happyshark.cn/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="v2ray" scheme="https://www.happyshark.cn/tags/v2ray/"/>
+    
+  </entry>
   
   <entry>
     <title>习近平总书记在庆祝中国共产党成立100周年大会上的讲话 Part.23</title>
@@ -418,29 +441,6 @@
     <category term="技术" scheme="https://www.happyshark.cn/tags/%E6%8A%80%E6%9C%AF/"/>
     
     <category term="Linux" scheme="https://www.happyshark.cn/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Win10/11 网络断连，无网络原因及解决方法</title>
-    <link href="https://www.happyshark.cn/2021/10/16/Win1011%E7%BD%91%E7%BB%9C%E6%96%AD%E8%BF%9E%EF%BC%8C%E6%97%A0%E7%BD%91%E7%BB%9C%E5%8E%9F%E5%9B%A0%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
-    <id>https://www.happyshark.cn/2021/10/16/Win1011%E7%BD%91%E7%BB%9C%E6%96%AD%E8%BF%9E%EF%BC%8C%E6%97%A0%E7%BD%91%E7%BB%9C%E5%8E%9F%E5%9B%A0%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</id>
-    <published>2021-10-16T04:00:00.000Z</published>
-    <updated>2021-10-16T04:00:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>win10 更新之后经常会出现已经连接wifi但提示无网络的情况，搜了下b站上有up主提供了方法，修改注册表即可修复</p><h1 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h1><p>在Win10 18362版以后的版本，微软在连接网络后，注册表的返回值发生了改变，之前是每当连网后，系统会自动向微软的dns.msftncsi.com发出请求，然后返回一个NCSI.txt的值，这一值如果正确时，则确认为已连网。而Win10 18362版本之后，这个返回服务器和值有了新变化并反映为6个注册表项中。这些变化因国内部分运行商的网络重定向，不能得到正确的反馈，因此出现实际能上网确显示为无internet的问题。</p><h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h1><ol><li><p>新建一个txt文档</p></li><li><p>写入如下内容：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line"></span><br><span class="line">[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters\Internet]</span><br><span class="line">ActiveDnsProbeContent=131.107.255.255</span><br><span class="line">ActiveDnsProbeContentV6=fd3e:4f5a:5b81::1</span><br><span class="line">ActiveDnsProbeHost=dns.msftncsi.com</span><br><span class="line">ActiveDnsProbeHostV6=dns.msftncsi.com</span><br><span class="line">ActiveWebProbeContent=Microsoft NCSI</span><br><span class="line">ActiveWebProbeContentV6=Microsoft NCSI         </span><br><span class="line">ActiveWebProbeHost=www.msftncsi.com                  </span><br><span class="line">ActiveWebProbeHostV6=ipv6.msftncsi.com</span><br><span class="line">ActiveWebProbePath=ncsi.txt</span><br><span class="line">ActiveWebProbePathV6=ncsi.txt</span><br><span class="line">EnableActiveProbing=dword:00000001</span><br><span class="line">PassivePollPeriod=dword:0000000f</span><br><span class="line">StaleThreshold=dword:0000001e</span><br><span class="line">WebTimeout=dword:00000023</span><br><span class="line"></span><br><span class="line">[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters\Internet\ManualProxies] </span><br></pre></td></tr></table></figure></li><li><p>保存，重命名后缀为.reg</p></li><li><p>运行即可</p></li></ol><blockquote><p>不放心的话可以备份注册表：</p><ol><li>win+R输regedit打开注册表编辑器</li><li>找到路径HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters\Internet </li><li>导出</li></ol></blockquote><h1 id="参考来源"><a href="#参考来源" class="headerlink" title="参考来源"></a>参考来源</h1><p><a href="https://www.bilibili.com/video/BV1v44y1x7zM?spm_id_from=333.999.0.0">https://www.bilibili.com/video/BV1v44y1x7zM?spm_id_from=333.999.0.0</a></p><p><a href="https://www.zhihu.com/question/268072972/answer/2165203375">https://www.zhihu.com/question/268072972/answer/2165203375</a></p>]]></content>
-    
-    
-    <summary type="html">win10 更新之后经常会出现已经连接wifi但提示无网络的情况，搜了下b站上有up主提供了方法，修改注册表即可修复</summary>
-    
-    
-    
-    <category term="技术" scheme="https://www.happyshark.cn/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-    <category term="网络" scheme="https://www.happyshark.cn/tags/%E7%BD%91%E7%BB%9C/"/>
-    
-    <category term="技术" scheme="https://www.happyshark.cn/tags/%E6%8A%80%E6%9C%AF/"/>
     
   </entry>
   
